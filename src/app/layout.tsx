@@ -15,6 +15,7 @@ directory .next directory is created. If you have any issues, it could be due to
 .next directory, cause it caches styles/components. So to solve the issues just 
 delete the .next directory.
 */
+// Reused component across the whole app goes in root layout. example navbar and footer.
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,6 +24,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <header>
+          <nav>
+            <ul>
+              <li>Home</li>
+              <li>Store</li>
+            </ul>
+          </nav>
+        </header>
         {children}
       </body>
     </html>

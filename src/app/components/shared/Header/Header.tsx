@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 export const Header = () => {
-    console.log("I'm the header!");
     
   return (
     <header>

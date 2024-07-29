@@ -1,13 +1,16 @@
-"use client"
-import styles from "./page.module.css";
+import { Description } from "./components/home/Description";
+import { Hero } from "./components/home/Hero";
+import { MainProducts } from "./components/home/MainProducts";
 
 export default function Home() {
-  console.log("hii client component!!!");
-  
+
   return (
     // Principal page
-    <main className={styles.main}>
-      <h1>Hello world!</h1>
+    // suggestion: tha majority of things that goes in pages should be in components, like building legos!
+    <main>
+      <Hero />
+      <Description />
+      <MainProducts />
     </main>
   );
 }

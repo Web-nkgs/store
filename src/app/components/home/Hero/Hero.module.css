@@ -1,0 +1,16 @@
+.hero {
+    margin: 10rem;
+}
+
+/* if the component is small, you could access it's children directly */
+.hero > h1 {
+    font-size: 3rem;
+    color: blueviolet;
+    text-align: center;
+}
+
+.hero > h2 {
+    font-size: 2rem;
+    color: blue;
+    text-align: center;
+}

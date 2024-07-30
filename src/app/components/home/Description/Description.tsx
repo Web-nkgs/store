@@ -29,7 +29,6 @@ export const Description = () => {
         'Description__button--border': hasBorder
     })
 
-    console.log(buttonStyles);
 
     return <section className={styles.Description}>
         {/* we could access directly the directories in public (images, videos, files, etc.) anything static. 
@@ -40,6 +39,10 @@ export const Description = () => {
         This is only recommended to deactivate (lazy loading) when the image is heavy and we need to upload it upfront. 
         quality by defaul is 75%. 
         The blur is used for static images, to show it more prettier on slow internet. */}
+        
+        {/* solution without library classNames */}
+        {/* <button onClick={(e) => handleClick(e)} className={`${styles[`Description__button`]} ${styles[`${hasBorder ? 'Description__button--border' : ''}`]}`}> */}
+        
         <button onClick={(e) => handleClick(e)} className={buttonStyles}>
             <div className={styles.Description__imageContainer}>
                 <Image

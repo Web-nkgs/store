@@ -1,11 +1,13 @@
-import { Inter } from "next/font/google";
+import { Roboto } from 'next/font/google'
 import { Header } from "./components/shared/Header";
 // the curly braces allows us to identify better where the error is.
 import { Footer } from "./components/shared/Footer";
 import 'app/sass/globals.sass'
 
-const inter = Inter({ subsets: ["latin"] });
-
+const roboto = Roboto({
+  weight: ['100', '300', '500', '700'],
+  subsets: ['latin']
+})
 
 // This file is super important, it's the wrapper to display the whole app.
 /* When we do build of our app (either for dev or production mode), the 
@@ -22,7 +24,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <Header />
         {children}
         <Footer />

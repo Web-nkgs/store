@@ -1,0 +1,26 @@
+.MainProducts
+    & > h1 
+        text-align: center
+    &__grid 
+        display: grid
+        width: 100%
+        grid-template-columns: repeat(2, 1fr)
+        // grid-template-rows: 18rem 18rem
+        & > article
+            position: relative
+            z-index: 1
+            height: 15rem
+            & > img
+                opacity: 0.4
+                object-fit: cover
+            & > p 
+                position: absolute
+                letter-spacing: 0.1rem
+                z-index: 2
+                font-size: 1.8rem
+                font-weight: 400
+                max-width: 19rem
+                top: 0
+                right: 1.5rem
+                text-align: right
+

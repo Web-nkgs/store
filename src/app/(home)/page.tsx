@@ -1,6 +1,6 @@
-import { Description } from "./components/home/Description";
-import { Hero } from "./components/home/Hero";
-import { MainProducts } from "./components/home/MainProducts";
+import { Description } from "../components/home/Description";
+import { Hero } from "../components/home/Hero";
+import { MainProducts } from "../components/home/MainProducts";
 
 export default function Home() {
 
@@ -8,8 +8,6 @@ export default function Home() {
     // Principal page
     // suggestion: tha majority of things that goes in pages should be in components, like building legos!
     <main>
-      <Hero />
-      <Description />
       <MainProducts />
     </main>
   );

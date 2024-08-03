@@ -2,11 +2,6 @@
 
 import { useEffect } from "react"
 
-interface ErrorProps {
-    error: Error,
-    reset: () => void
-}
-
 // This Next.js Error file works through a React ErrorBoundary.
 export default function Error({ error, reset }: ErrorProps) {
 

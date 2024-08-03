@@ -10,6 +10,8 @@ interface CategoryProps {
 export default function Category(props: CategoryProps) {
     const { categories } = props.params
     const search = props.searchParams
+    // GlobalError gets activated.
+    // throw new Error("Error: BOOM!")
     console.log("categories: ", categories);
     console.log("search: ", search);
     

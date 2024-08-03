@@ -1,3 +1,6 @@
+import { ProductsWrapper } from "app/components/Store/ProductsWrapper/ProductsWrapper";
+import { getProducts } from "app/services/shopify";
+
 interface CategoryProps {
     params: {
         categories: string[]
@@ -7,13 +10,22 @@ interface CategoryProps {
     }
 }
 
-export default function Category(props: CategoryProps) {
+export default async function Category(props: CategoryProps) {
+    const products = await getProducts()
     const { categories } = props.params
     const search = props.searchParams
+    
     // GlobalError gets activated.
     // throw new Error("Error: BOOM!")
+
     console.log("categories: ", categories);
     console.log("search: ", search);
+
+    if (!products) {
+        return null
+    }
     
-    return <h1>Dynamic categories: {categories}</h1>
+    return (
+        <ProductsWrapper products={products}/>
+    )
 }

@@ -1,4 +1,3 @@
-import { Product } from "../../../types/Product";
 import Image from "next/image";
 import styles from "./MainProducts.module.sass"
 import { getProducts } from "app/services/shopify";
@@ -6,12 +5,12 @@ import { getProducts } from "app/services/shopify";
 // server components in Next.js can be async, ONLY IN NEXT-JS.
 export const MainProducts = async () => {
 
-    // const products: Product[] | null = await getProducts()
-    const response = await fetch('http://localhost:3000/api')
-    const { products }: { products: Product[] | null } = await response.json()
+    const products: ProductType[] | undefined = await getProducts()
 
-
-
+    if (!products) {
+        return null
+    }
+    
     return <section className={styles.MainProducts}>
         <h1>New Products released!</h1>
         <div className={styles.MainProducts__grid}>
@@ -21,7 +20,7 @@ export const MainProducts = async () => {
                         <p>{product.title}</p>
                         <Image
                             fill
-                            src={product.image.src}
+                            src={product.image}
                             alt={product.title}
                             loading="eager" />
                     </article>

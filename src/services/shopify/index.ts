@@ -1,6 +1,5 @@
 import { env } from "app/config/env"
 import { shopifyUrls } from "./urls"
-import { Product } from "app/types/Product"
 
 export const getProducts = async () => {
     try {
@@ -11,10 +10,9 @@ export const getProducts = async () => {
         })
         const data = await response.json()
         // throw new Error('Error')
-        const products: Product[] = data.products
+        const products: ProductType[] = data.products
         return products
     } catch (error) {
         console.log(error);
-        return null
     }
 }

@@ -9,7 +9,7 @@ export default function Home() {
     // suggestion: tha majority of things that goes in pages should be in components, like building legos!
     <main>
        <h1>Products</h1>
-      {/* <MainProducts /> */}
+      <MainProducts />
     </main>
   );
 }

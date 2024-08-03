@@ -1,5 +1,4 @@
-"use client"
-import React, { useEffect } from "react";
+import React from "react";
 import { Description } from "../components/home/Description";
 import { Hero } from "../components/home/Hero";
 
@@ -8,14 +7,8 @@ type Props = {
 }
 
 // Every component that's static should go in the layout | Only dynamic components should go in page.
-export default function HomeTemplate({ children }: Props) {
-    console.log("HomeTemplate re-mount");
+export default function HomeLayout({ children }: Props) {
 
-    useEffect(() => {
-        console.log('send google analytics, amplitud, etc. metrics');
-        
-    }, [])
-    
     return (
         <div>
             <Hero />

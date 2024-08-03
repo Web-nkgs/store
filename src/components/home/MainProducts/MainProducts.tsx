@@ -6,8 +6,12 @@ import { getProducts } from "app/services/shopify";
 // server components in Next.js can be async, ONLY IN NEXT-JS.
 export const MainProducts = async () => {
 
-    const products: Product[] | null = await getProducts()
-    
+    // const products: Product[] | null = await getProducts()
+    const response = await fetch('http://localhost:3000/api')
+    const { products }: { products: Product[] | null } = await response.json()
+
+
+
     return <section className={styles.MainProducts}>
         <h1>New Products released!</h1>
         <div className={styles.MainProducts__grid}>

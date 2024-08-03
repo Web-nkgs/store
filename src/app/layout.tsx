@@ -1,8 +1,8 @@
 import { Roboto } from 'next/font/google';
-import { Header } from "./components/shared/Header";
+import { Header } from "../components/shared/Header";
 // the curly braces allows us to identify better where the error is.
 import 'app/sass/globals.sass';
-import { Footer } from "./components/shared/Footer";
+import { Footer } from "../components/shared/Footer";
 
 const roboto = Roboto({
   weight: ['100', '300', '500', '700'],

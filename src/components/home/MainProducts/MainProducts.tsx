@@ -1,4 +1,4 @@
-import { Product } from "../../../../../types/Product";
+import { Product } from "../../../types/Product";
 import Image from "next/image";
 import styles from "./MainProducts.module.sass"
 

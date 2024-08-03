@@ -1,6 +1,6 @@
 import React from "react";
-import { Description } from "../components/home/Description";
-import { Hero } from "../components/home/Hero";
+import { Description } from "../../components/home/Description";
+import { Hero } from "../../components/home/Hero";
 
 type Props = {
     children: React.ReactNode

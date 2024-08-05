@@ -1,4 +1,4 @@
-import { getProducts } from "app/services/shopify";
+import { getProducts } from "app/services/shopify/products";
 import { NextResponse } from "next/server";
 /* This architecture is called Back For Frontend (BFF). Allows use to hide the services we're using.
 It's known as a proxy server, a server that'll receive the data.

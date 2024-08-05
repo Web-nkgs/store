@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
+import styles from '../Header/Header.module.sass'
 
 export const Header = () => {
 
   return (
     <header>
       <nav>
-        <ul>
+        <ul className={styles.Header__list}>
           {/* Using Link allows us to reduce bandwidth cause it caches the files.
               Since Next.js renders on the server side we do less petitions 
               avoiding the reload (done with anchor <a>).

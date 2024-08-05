@@ -1,11 +1,11 @@
+import { getMainProducts } from "app/services/shopify/products";
 import Image from "next/image";
-import styles from "./MainProducts.module.sass"
-import { getProducts } from "app/services/shopify/products";
+import styles from "./MainProducts.module.sass";
 
 // server components in Next.js can be async, ONLY IN NEXT-JS.
 export const MainProducts = async () => {
 
-    const products: ProductType[] | undefined = await getProducts()
+    const products: ProductType[] | null = await getMainProducts()
 
     if (!products) {
         return null

@@ -45,12 +45,19 @@ export const getMainProducts = async () => {
     // cache: "force-cache"
 
     // Option 2: NextJS manages internally re-fetch of the data every x seconds.
-    next: {
-      revalidate: 28800
-    }
+    // next: {
+    //   revalidate: 28800
+    // }
 
     // Option 3: On normal reload data gets fetched again, since there's no cache.
     // cache: "no-cache"
+
+    cache: "force-cache",
+    
+    // to clear/invalidate cache add this
+    next: {
+      tags: ['main-products']
+    }
 
   });
 

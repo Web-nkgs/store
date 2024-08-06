@@ -3,7 +3,7 @@ import { shopifyUrls } from "./urls";
 
 export const getProducts = async (
   id?: string
-): Promise<ProductType[] | null> => {
+): Promise<ProductType[]> => {
   try {
     const apiUrl = id
       ? `${shopifyUrls.products.all}?ids=${id}`
@@ -31,7 +31,6 @@ export const getProducts = async (
     return transformedProducts;
   } catch (error) {
     console.log(error);
-    return null;
   }
 };
 

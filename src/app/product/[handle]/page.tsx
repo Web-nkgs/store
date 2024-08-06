@@ -6,6 +6,7 @@ SearchParams are useful for adding page config, search token, even analytics and
 
 import { ProductView } from "app/components/product/ProductView";
 import { getProducts } from "app/services/shopify/products";
+import { redirect } from "next/navigation";
 
 // Server component
 
@@ -18,11 +19,13 @@ interface ProductPageProps {
 export default async function ProductPage({ searchParams }: ProductPageProps) {
   const id = searchParams.id
   const products = await getProducts(id)
+  const product = products[0]
 
-  return <>
- {products && products[0] ? <ProductView product={products[0]} /> : 
- <h1>No existe el producto</h1>} 
-  </>
+  // if(!id){
+  //   redirect('/')
+  // }
+
+  return <ProductView product={product} />
 }
 
 // ---------------------------------------------------

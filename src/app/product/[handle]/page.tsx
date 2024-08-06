@@ -16,10 +16,31 @@ interface ProductPageProps {
   }
 }
 
-export default async function ProductPage({ searchParams }: ProductPageProps) {
+const getProductInfo = async ({searchParams}: ProductPageProps): Promise<ProductType> => {
   const id = searchParams.id
+  // this doesn't affect preformance thanks to NextJS memoization implemented in fetch (only the first request loads).
   const products = await getProducts(id)
   const product = products[0]
+  return product
+}
+
+// to improve SEO in a dynamic page
+export async function generateMetadata({searchParams}: ProductPageProps) {
+  const product = await getProductInfo({searchParams})
+
+  return {
+    title: product.title,
+    description: product.description,
+    keywords: product.tags,
+    // Image that show when you share an element (article for example in facebook, twitter).
+    openGraph: {
+      images: [product.image]
+    }
+  }
+}
+
+export default async function ProductPage({ searchParams }: ProductPageProps) {
+  const product = await getProductInfo({searchParams})
 
   // if(!id){
   //   redirect('/')

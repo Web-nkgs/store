@@ -24,12 +24,9 @@ export function ProductView({ product }: ProductViewProps) {
             <section className={styles.ProductView__info}>
                 <h1 className={styles.ProductView__info__title}>{product.title}</h1>
                 <p className={styles.ProductView__info__category}>{product.tags}</p>
-                {/* <SanitizeHTML tag="p" className={styles.ProductView__info__description}>
+                <SanitizeHTML tag="p" className={styles.ProductView__info__description}>
                     {product.description}
-                </SanitizeHTML> */}
-                   <p className={styles.ProductView__info__description}>
-                    {product.description}
-                </p>
+                </SanitizeHTML>
                 <span className={styles.ProductView__info__price}>
                     $ {product.price}
                 </span>

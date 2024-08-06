@@ -1,6 +1,12 @@
-import { Description } from "../../components/home/Description";
-import { Hero } from "../../components/home/Hero";
+import { Metadata } from "next";
 import { MainProducts } from "../../components/home/MainProducts";
+
+// to improve SEO in a static page
+export const metadata: Metadata = {
+  title: "Future World",
+  description: "Welcome to future World, an ecommerce",
+  keywords: ["ecommerce", "future", "world", "technology"]
+}
 
 export default function Home() {
 

@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from '../Header/Header.module.sass'
+import { cookies } from 'next/headers'
 
 export const Header = () => {
+  const cookiesStore = cookies()
+  const token = cookiesStore.get('accessToken')?.value
 
   return (
     <header>
@@ -26,6 +29,7 @@ export const Header = () => {
             </Link>
           </li>
         </ul>
+        {token ? <p>Hola!</p> : <Link href="/login">Login</Link>}
       </nav>
     </header>
   )

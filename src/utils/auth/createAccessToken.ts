@@ -24,5 +24,7 @@ export const createAccessToken = async (email: string, password: string) => {
       // cookie can only be used in our site
       sameSite: "strict",
     });
+
+    return accessToken
   }
 };

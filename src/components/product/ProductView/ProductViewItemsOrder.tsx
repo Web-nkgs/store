@@ -14,19 +14,14 @@ export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItems
     const [counter, setCounter] = useState(1);
     const { addoToCart } = useShoppingCart()
 
-    const handleAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-        event.preventDefault()
-        
+    const handleSubmit = (event: SyntheticEvent) => {
+        event.preventDefault();
         addoToCart({
             title: product.title,
             price: product.price,
             quantity: counter,
             id: product.id
         })
-    }
-
-    const handleSubmit = (event: SyntheticEvent) => {
-        event.preventDefault();
     };
 
     const handleSubtract = (event: SyntheticEvent) => {
@@ -54,9 +49,7 @@ export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItems
             >
                 <button
                     className={styles.ProductViewItemsOrder__submit}
-                    type="submit"
-                    onClick={(e) => handleAddToCart(e)}
-                >
+                    type="submit">
                     <FaCartShopping />
                     <span>Add to cart</span>
                 </button>

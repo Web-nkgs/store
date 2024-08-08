@@ -1,14 +1,13 @@
-import Link from 'next/link'
-import React from 'react'
-import styles from '../Header/Header.module.sass'
-import { cookies } from 'next/headers'
 import { validateAccessToken } from 'app/utils/auth/validateAccessToken'
+import Link from 'next/link'
+import styles from '../Header/Header.module.sass'
+import { ShoppingCart } from '../ShoppingCart'
 
 export const Header = async () => {
   const customer = await validateAccessToken()
 
   return (
-    <header>
+    <header className={styles.Header}>
       <nav>
         <ul className={styles.Header__list}>
           {/* Using Link allows us to reduce bandwidth cause it caches the files.
@@ -29,8 +28,11 @@ export const Header = async () => {
             </Link>
           </li>
         </ul>
-        {customer?.firstName ? <p>Hola {customer.firstName}!</p> : <Link href="/login">Login</Link>}
       </nav>
+      <div className={styles.Header__user}>
+        {customer?.firstName ? <p>Hola {customer.firstName}!</p> : <Link href="/login">Login</Link>}
+        <ShoppingCart />
+      </div>
     </header>
   )
 }

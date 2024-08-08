@@ -1,5 +1,7 @@
+import styles from './Footer.module.sass';
+
 export const Footer = () => {
-    return <footer>
-        <p>Footer Future World</p>
+    return <footer className={styles.Footer}>
+        <p>Footer Future World © {new Date().getFullYear()}</p>
     </footer>
 }

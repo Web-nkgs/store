@@ -12,15 +12,17 @@ interface ProductViewItemsOrderProps {
 
 export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItemsOrderProps) => {
     const [counter, setCounter] = useState(1);
-    const { addoToCart } = useShoppingCart()
+    const { addToCart } = useShoppingCart()
 
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
-        addoToCart({
+        addToCart({
             title: product.title,
             price: product.price,
             quantity: counter,
-            id: product.id
+            id: product.id,
+            image: product.image,
+            merchandiseId: product.handle
         })
     };
 

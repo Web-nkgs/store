@@ -1,22 +1,24 @@
 interface ErrorProps {
-    error: Error,
-    reset: () => void
+  error: Error;
+  reset: () => void;
 }
 
 interface ProductType {
-    id: string;
-    title: string;
-    description: string;
-    price: number;
-    image: string;
-    quantity: number;
-    handle: string;
-    tags: string;
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+  quantity: number;
+  handle: string;
+  tags: string;
 }
 
 type CartItem = {
-    title: string
-    price: number
-    quantity: number
-    id: string
-}
+  title: string;
+  price: number;
+  quantity: number;
+  id: string;
+  image: string;
+  merchandiseId: string;
+};

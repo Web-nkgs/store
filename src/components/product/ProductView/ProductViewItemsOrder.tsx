@@ -22,7 +22,7 @@ export const ProductViewItemsOrder = ({ maxQuantity, product }: ProductViewItems
             quantity: counter,
             id: product.id,
             image: product.image,
-            merchandiseId: product.handle
+            merchandiseId: product.gql_id
         })
     };
 

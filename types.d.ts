@@ -12,6 +12,7 @@ interface ProductType {
   quantity: number;
   handle: string;
   tags: string;
+  gql_id: string;
 }
 
 type CartItem = {

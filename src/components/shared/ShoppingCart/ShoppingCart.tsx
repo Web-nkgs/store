@@ -5,7 +5,8 @@ import { FaShoppingCart } from "react-icons/fa"
 import styles from "./ShoppingCart.module.sass"
 import { ShoppingCartItem } from "./ShoppingCartItem"
 
-export const ShoppingCart = () => {
+// Transform it to component that doesn't re-render, utility from Next Dynamic.
+export default function ShoppingCart() {
     const { cart } = useShoppingCart()
     const [isCartItemsOpen, setIsCartItemsOpen] = useState(false)
 

@@ -5,6 +5,7 @@
 import { GraphQLClientSingleton } from "app/graphql";
 import { createCartMutation } from "app/graphql/mutations/createCartMutation";
 import { createUserMutation } from "app/graphql/mutations/createUserMutation";
+import { decrypt } from "app/lib";
 import { createAccessToken } from "app/utils/auth/createAccessToken";
 import { validateAccessToken } from "app/utils/auth/validateAccessToken";
 import { cookies } from "next/headers";
@@ -36,8 +37,6 @@ export const handleCreateUser = async (formData: FormData) => {
 
     redirect("/store");
   }
-  console.log("customer: ", customer);
-  console.log("customerUserErrors: ", customerUserErrors);
 };
 
 export const handleLogin = async (formData: FormData) => {
@@ -54,9 +53,10 @@ export const handleLogin = async (formData: FormData) => {
 
 export const handleCreateCart = async (cartItems: CartItem[]) => {
   const cookiesStore = cookies();
-  const accessToken = cookiesStore.get("accessToken")?.value as string;
+  const accessTokenEncrypted = cookiesStore.get("accessToken")?.value as string;
 
-  if (!accessToken) redirect("/login");
+  if (!accessTokenEncrypted) return redirect("/login");
+  const accessTokenInfo = await decrypt(accessTokenEncrypted);
 
   const graphqlClient = GraphQLClientSingleton.getInstance().getClient();
   const customer = await validateAccessToken();
@@ -64,7 +64,7 @@ export const handleCreateCart = async (cartItems: CartItem[]) => {
   const variables = {
     input: {
       buyerIdentity: {
-        customerAccessToken: accessToken,
+        customerAccessToken: accessTokenInfo.accessToken,
         email: customer?.email,
       },
       lines: cartItems.map((item) => ({
@@ -74,13 +74,15 @@ export const handleCreateCart = async (cartItems: CartItem[]) => {
     },
   };
 
-  const { cartCreate }: {
+  const {
+    cartCreate,
+  }: {
     cartCreate?: {
       cart?: {
-        checkoutUrl: string
-      }
-    }
-  } = await graphqlClient.request(createCartMutation, variables)
+        checkoutUrl: string;
+      };
+    };
+  } = await graphqlClient.request(createCartMutation, variables);
 
-  return cartCreate?.cart?.checkoutUrl
+  return cartCreate?.cart?.checkoutUrl;
 };

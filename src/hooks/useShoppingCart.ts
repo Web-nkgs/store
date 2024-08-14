@@ -17,13 +17,11 @@ export const useShoppingCart = create<Store>()((set) => ({
     }
 
     const cart = localStorage.getItem("cart");
-    console.log("cartyyy: ", cart);
     
     if (cart) {
       return JSON.parse(cart);
     }
 
-    console.log("cartyyy empty???: ", cart);
     return [];
   })(),
   addToCart: (cartItem: CartItem) =>

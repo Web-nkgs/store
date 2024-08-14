@@ -1,16 +1,18 @@
 import { GraphQLClientSingleton } from "app/graphql";
 import { customerInfo } from "app/graphql/queries/customerInfo";
+import { decrypt } from "app/lib";
 import { cookies } from "next/headers";
 
 export const validateAccessToken = async () => {
   const cookieStore = cookies();
-  const accesToken = cookieStore.get("accessToken")?.value;
-  if (!accesToken) return
-  
+  const accessTokenEncrypted = cookieStore.get("accessToken")?.value;
+  if (!accessTokenEncrypted) return;
+  const accessTokenInfo = await decrypt(accessTokenEncrypted);
+
   const graphqlClient = await GraphQLClientSingleton.getInstance().getClient();
   const { customer } = await graphqlClient.request(customerInfo, {
-    customerAccessToken: accesToken,
+    customerAccessToken: accessTokenInfo.accessToken,
   });
-  console.log("customer: ", customer);
-  return customer
+
+  return customer;
 };

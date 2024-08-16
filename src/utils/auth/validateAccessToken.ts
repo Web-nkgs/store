@@ -10,7 +10,7 @@ export const validateAccessToken = async () => {
   const accessTokenInfo = await decrypt(accessTokenEncrypted);
 
   const graphqlClient = await GraphQLClientSingleton.getInstance().getClient();
-  const { customer } = await graphqlClient.request(customerInfo, {
+  const { customer }: any = await graphqlClient.request(customerInfo, {
     customerAccessToken: accessTokenInfo.accessToken,
   });
 

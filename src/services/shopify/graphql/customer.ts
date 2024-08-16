@@ -14,7 +14,7 @@ export const getCustomerOrders = async () => {
         customerAccessToken: accessTokenInfo.accessToken
     }
 
-    const { customer } = await grapghqlClient.request(getOrdersQuery, variables)
+    const { customer }: any = await grapghqlClient.request(getOrdersQuery, variables)
     const orders = customer.orders.edges.map((edge: any) => edge.node)
     return {
         totalOrders: customer.orders.totalCount,

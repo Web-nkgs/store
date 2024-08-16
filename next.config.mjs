@@ -1,11 +1,16 @@
 /** @type {import('next').NextConfig} */
 import path from 'path';
 import { fileURLToPath } from 'url';
+import bundleAnalyzer from '@next/bundle-analyzer'
 
 /* This configuration file is very important, here we'll set 
 SASS compilers, dynamic imports, webpack configs.
 */
 
+const withBundleAnalyzer = bundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+    openAnalyzer: false,
+})
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -25,4 +30,4 @@ const nextConfig = {
     }
 }
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig)

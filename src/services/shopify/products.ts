@@ -31,6 +31,7 @@ export const getProducts = async (
     return transformedProducts;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
 

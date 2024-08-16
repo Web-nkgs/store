@@ -3,7 +3,7 @@ import { validateAccessToken } from "app/utils/auth/validateAccessToken";
 
 export default async function MyAccountPage() {
     const customer = await validateAccessToken()
-    const ordersInfo = await getCustomerOrders()
+    const ordersInfo: {totalOrders: number, orders: any[]} = await getCustomerOrders()
 
     return (
         <section>

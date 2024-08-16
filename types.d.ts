@@ -23,3 +23,14 @@ type CartItem = {
   image: string;
   merchandiseId: string;
 };
+
+type Collection = {
+  id: string;
+  title: string;
+  handle: string;
+};
+
+type CustomerAccessToken = {
+  accessToken: string;
+  expiresAt: string;
+};

@@ -11,19 +11,20 @@ interface CategoryProps {
 
 export default async function Category(props: CategoryProps) {
     const { categories } = props.params
-    
+
     let products: ProductType[] | undefined
-    const collections = await getCollections()
+    const collections: Collection[] = await getCollections()
     if (categories) {
-        const collectionId = collections.find((collection) => collection.handle === categories[0]).id
+        const collectionId = collections.find((collection) => collection.handle === categories[0])?.id
+        if (!collectionId) return
         const productsByCollection = await getCollectionProducts(collectionId)
         products = productsByCollection
     } else {
         products = await getProducts()
     }
-    
+
     const search = props.searchParams
-    
+
     // GlobalError gets activated.
     // throw new Error("Error: BOOM!")
 
@@ -32,8 +33,8 @@ export default async function Category(props: CategoryProps) {
     if (!products) {
         return null
     }
-    
+
     return (
-        <ProductsWrapper products={products}/>
+        <ProductsWrapper products={products} />
     )
 }

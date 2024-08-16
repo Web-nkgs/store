@@ -9,7 +9,7 @@ type Props = {
 
 /* Layout --> Is going to wrap the other components inside of it. It's hieriarchical. */
 export default async function Layout({ children }: Props) {
-    const collections = await getCollections()
+    const collections: Collection[] = await getCollections()
 
     return (
         <main className={styles.StoreLayout}>

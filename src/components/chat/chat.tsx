@@ -4,7 +4,7 @@ import styles from './Chat.module.sass';
 
 // TO-DO: posible solution for product recommendations: https://sdk.vercel.ai/providers/ai-sdk-providers/google-generative-ai#google-generative-ai-provider.
 // This is not complete, since the model can hallucinate features of the products, so we have to improve how we manage the AI with different tools (ex. langChain)
-export const Chat = (props: { agent: string }) => {
+export default function Chat(props: { agent: string }) {
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     initialMessages: [
       {

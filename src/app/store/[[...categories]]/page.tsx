@@ -2,6 +2,9 @@ import { ProductsWrapper } from "app/components/Store/ProductsWrapper/ProductsWr
 import { getCollectionProducts, getCollections } from "app/services/shopify/collections";
 import { getProducts } from "app/services/shopify/products";
 
+// useful when you have a lot of requests.
+export const runtime = "edge"
+
 interface CategoryProps {
     params: {
         categories: string[]

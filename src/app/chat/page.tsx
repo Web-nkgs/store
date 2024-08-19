@@ -1,4 +1,4 @@
-import Chat from "app/components/chat/chat";
+import { Chat } from "app/components/chat/chat";
 import { getProducts } from "app/services/shopify/products";
 import { createAgent } from "app/utils/googleAi/createAgent";
 
